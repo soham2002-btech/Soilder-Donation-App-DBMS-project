@@ -1,0 +1,304 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.25201}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 DBMS PROJECT\par
+Microsoft Windows [Version 10.0.25201.1000]\par
+(c) Microsoft Corporation. All rights reserved.\par
+\par
+C:\\Users\\Admin>cd C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\par
+\par
+C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin>-u root -p\par
+'-u' is not recognized as an internal or external command,\par
+operable program or batch file.\par
+\par
+C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin>mysql -u root -p\par
+Enter password: ********\par
+Welcome to the MySQL monitor.  Commands end with ; or \\g.\par
+Your MySQL connection id is 8\par
+Server version: 8.0.30 MySQL Community Server - GPL\par
+\par
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.\par
+\par
+Oracle is a registered trademark of Oracle Corporation and/or its\par
+affiliates. Other names may be trademarks of their respective\par
+owners.\par
+\par
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\par
+\par
+mysql> show databases\par
+    -> show databases;\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2\par
+mysql> show databases;\par
++--------------------+\par
+| Database           |\par
++--------------------+\par
+| information_schema |\par
+| mysql              |\par
+| performance_schema |\par
+| sohamdb            |\par
+| sys                |\par
++--------------------+\par
+5 rows in set (57.65 sec)\par
+\par
+mysql>\par
+mysql> CREATE DATABASE DBMS_Project;\par
+Query OK, 1 row affected (1.03 sec)\par
+\par
+mysql> show databases;\par
++--------------------+\par
+| Database           |\par
++--------------------+\par
+| dbms_project       |\par
+| information_schema |\par
+| mysql              |\par
+| performance_schema |\par
+| sohamdb            |\par
+| sys                |\par
++--------------------+\par
+6 rows in set (0.00 sec)\par
+\par
+mysql> use dbms_project;\par
+Database changed\par
+mysql> show Table;\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1\par
+mysql> show tables;\par
+Empty set (0.75 sec)\par
+\par
+mysql> CREATE TABLE SOILDERS_DATA;\par
+ERROR 4028 (HY000): A table must have at least one visible column.\par
+mysql> CREATE TABLE SOILDERS_DATA\par
+    -> (\par
+    -> Soilder_name varchar(255)\par
+    -> Dead date date\par
+    -> ;\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Dead date date' at line 4\par
+mysql> CREATE TABLE SOILDERS_DATA(\par
+    -> Sr.No int AUTO_INCREAMENT,\par
+    -> Soilder_name varchar(255),\par
+    -> DEAD_DATE date NOT NULL\par
+    -> );\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.No int AUTO_INCREAMENT,\par
+Soilder_name varchar(255),\par
+DEAD_DATE date NOT NULL\par
+)' at line 2\par
+mysql> CREATE TABLE SOILDERS_DATA(\par
+    -> Sr_No int AUTO_INCREAMENT,\par
+    -> Soilder_name varchar(255),\par
+    -> DEAD_DATE date NOT NULL\par
+    -> );\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO_INCREAMENT,\par
+Soilder_name varchar(255),\par
+DEAD_DATE date NOT NULL\par
+)' at line 2\par
+mysql> CREATE TABLE SOILDERS_DATA(\par
+    -> Sr.No int AUTO_INCREMENT,\par
+    -> Soilder_name varchar(255),\par
+    -> DEAD_DATE date NOT NULL\par
+    -> );\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.No int AUTO_INCREMENT,\par
+Soilder_name varchar(255),\par
+DEAD_DATE date NOT NULL\par
+)' at line 2\par
+mysql> CREATE TABLE SOILDERS_DATA(\par
+    -> Sr_No int,\par
+    -> Soilder_name varchar(255),\par
+    -> DEAD_DATE date NOT NULL\par
+    -> );\par
+Query OK, 0 rows affected (3.41 sec)\par
+\par
+mysql> desc soilders_data;\par
++--------------+--------------+------+-----+---------+-------+\par
+| Field        | Type         | Null | Key | Default | Extra |\par
++--------------+--------------+------+-----+---------+-------+\par
+| Sr_No        | int          | YES  |     | NULL    |       |\par
+| Soilder_name | varchar(255) | YES  |     | NULL    |       |\par
+| DEAD_DATE    | date         | NO   |     | NULL    |       |\par
++--------------+--------------+------+-----+---------+-------+\par
+3 rows in set (0.44 sec)\par
+\par
+mysql> INSERT INTO TABLE soilder_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',17/06/2020);\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE soilder_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',1' at line 1\par
+mysql> INSERT INTO TABLE soilder_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',17-06-2020);\par
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TABLE soilder_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',1' at line 1\par
+mysql> INSERT INTO soilder_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',17-06-2020);\par
+ERROR 1146 (42S02): Table 'dbms_project.soilder_data' doesn't exist\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',17-06-2020);\par
+ERROR 1292 (22007): Incorrect date value: '-2009' for column 'DEAD_DATE' at row 1\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',2020-06-17);\par
+ERROR 1292 (22007): Incorrect date value: '1997' for column 'DEAD_DATE' at row 1\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu',2020/06/17);\par
+ERROR 1292 (22007): Incorrect date value: '19.803921568588235294' for column 'DEAD_DATE' at row 1\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(1,'Col B Santosh Babu','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.53 sec)\par
+\par
+mysql> SELECT * FROM soilders_data;\par
++-------+--------------------+------------+\par
+| Sr_No | Soilder_name       | DEAD_DATE  |\par
++-------+--------------------+------------+\par
+|     1 | Col B Santosh Babu | 2020-06-17 |\par
++-------+--------------------+------------+\par
+1 row in set (0.05 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(2,'Nb Sub Nuduram Soren','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.18 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(3,'Nb Sub Mandip Singh','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.07 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(4,'Nb Sub Satnam Singh','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.19 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(5,'Hav K Palani','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.11 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(6,'Hav Sunil Kumar','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.08 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(6,'Hav Bipul Roy','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.07 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(7,'Nk Deepak Kumar','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.05 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(9,'Sep Rajesh Orang','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.09 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(10,'Sep Kundan Kumar Ojha','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(11,'Sep Ganesh Ram','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.08 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(12,'Sep Chandrakanta Pradhan','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.07 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(12,'Sep Ankush','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.07 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(14,'Sep Gurbinder','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(15,'Sep Gurtej Singh','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(16,'Sep Chandan Kumar','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(17,'Sep Kundan Kumar','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(18,'Sep Aman Kumar','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.05 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(19,'Sep Jai Kishore Singh','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.11 sec)\par
+\par
+mysql> INSERT INTO soilders_data(Sr_No,Soilder_name,DEAD_DATE) VALUES(20,'Sep Ganesh Hansda','2020/06/17');\par
+Query OK, 1 row affected, 1 warning (0.06 sec)\par
+\par
+mysql> SELECT * FROM soilders_data;\par
++-------+--------------------------+------------+\par
+| Sr_No | Soilder_name             | DEAD_DATE  |\par
++-------+--------------------------+------------+\par
+|     1 | Col B Santosh Babu       | 2020-06-17 |\par
+|     2 | Nb Sub Nuduram Soren     | 2020-06-17 |\par
+|     3 | Nb Sub Mandip Singh      | 2020-06-17 |\par
+|     4 | Nb Sub Satnam Singh      | 2020-06-17 |\par
+|     5 | Hav K Palani             | 2020-06-17 |\par
+|     6 | Hav Sunil Kumar          | 2020-06-17 |\par
+|     6 | Hav Bipul Roy            | 2020-06-17 |\par
+|     7 | Nk Deepak Kumar          | 2020-06-17 |\par
+|     9 | Sep Rajesh Orang         | 2020-06-17 |\par
+|    10 | Sep Kundan Kumar Ojha    | 2020-06-17 |\par
+|    11 | Sep Ganesh Ram           | 2020-06-17 |\par
+|    12 | Sep Chandrakanta Pradhan | 2020-06-17 |\par
+|    12 | Sep Ankush               | 2020-06-17 |\par
+|    14 | Sep Gurbinder            | 2020-06-17 |\par
+|    15 | Sep Gurtej Singh         | 2020-06-17 |\par
+|    16 | Sep Chandan Kumar        | 2020-06-17 |\par
+|    17 | Sep Kundan Kumar         | 2020-06-17 |\par
+|    18 | Sep Aman Kumar           | 2020-06-17 |\par
+|    19 | Sep Jai Kishore Singh    | 2020-06-17 |\par
+|    20 | Sep Ganesh Hansda        | 2020-06-17 |\par
++-------+--------------------------+------------+\par
+20 rows in set (0.00 sec)\par
+\par
+mysql> UPDATE soilder_data\par
+    -> SET SR_no = 7 Where Soilder_name='Hav Bipul Roy';\par
+ERROR 1146 (42S02): Table 'dbms_project.soilder_data' doesn't exist\par
+mysql> UPDATE soilders_data\par
+    -> SET SR_no = 7 Where Soilder_name='Hav Bipul Roy';\par
+Query OK, 1 row affected (0.51 sec)\par
+Rows matched: 1  Changed: 1  Warnings: 0\par
+\par
+mysql> SELECT * FROM soilders_table;\par
+ERROR 1146 (42S02): Table 'dbms_project.soilders_table' doesn't exist\par
+mysql> SELECT * FROM soilders_data;\par
++-------+--------------------------+------------+\par
+| Sr_No | Soilder_name             | DEAD_DATE  |\par
++-------+--------------------------+------------+\par
+|     1 | Col B Santosh Babu       | 2020-06-17 |\par
+|     2 | Nb Sub Nuduram Soren     | 2020-06-17 |\par
+|     3 | Nb Sub Mandip Singh      | 2020-06-17 |\par
+|     4 | Nb Sub Satnam Singh      | 2020-06-17 |\par
+|     5 | Hav K Palani             | 2020-06-17 |\par
+|     6 | Hav Sunil Kumar          | 2020-06-17 |\par
+|     7 | Hav Bipul Roy            | 2020-06-17 |\par
+|     7 | Nk Deepak Kumar          | 2020-06-17 |\par
+|     9 | Sep Rajesh Orang         | 2020-06-17 |\par
+|    10 | Sep Kundan Kumar Ojha    | 2020-06-17 |\par
+|    11 | Sep Ganesh Ram           | 2020-06-17 |\par
+|    12 | Sep Chandrakanta Pradhan | 2020-06-17 |\par
+|    12 | Sep Ankush               | 2020-06-17 |\par
+|    14 | Sep Gurbinder            | 2020-06-17 |\par
+|    15 | Sep Gurtej Singh         | 2020-06-17 |\par
+|    16 | Sep Chandan Kumar        | 2020-06-17 |\par
+|    17 | Sep Kundan Kumar         | 2020-06-17 |\par
+|    18 | Sep Aman Kumar           | 2020-06-17 |\par
+|    19 | Sep Jai Kishore Singh    | 2020-06-17 |\par
+|    20 | Sep Ganesh Hansda        | 2020-06-17 |\par
++-------+--------------------------+------------+\par
+20 rows in set (0.00 sec)\par
+\par
+mysql> UPDATE soilder_data\par
+    -> SET SR_no = 8 Where Soilder_name='Nk Deepak Kumar';\par
+ERROR 1146 (42S02): Table 'dbms_project.soilder_data' doesn't exist\par
+mysql> UPDATE soilders_data\par
+    -> SET SR_no = 8 Where Soilder_name='Nk Deepak Kumar';\par
+Query OK, 1 row affected (0.07 sec)\par
+Rows matched: 1  Changed: 1  Warnings: 0\par
+\par
+mysql> UPDATE soilders_data\par
+    -> SET SR_no = 13 Where Soilder_name='Sep Ankush';\par
+Query OK, 1 row affected (0.13 sec)\par
+Rows matched: 1  Changed: 1  Warnings: 0\par
+\par
+mysql> SELECT * FROM soilders_data;\par
++-------+--------------------------+------------+\par
+| Sr_No | Soilder_name             | DEAD_DATE  |\par
++-------+--------------------------+------------+\par
+|     1 | Col B Santosh Babu       | 2020-06-17 |\par
+|     2 | Nb Sub Nuduram Soren     | 2020-06-17 |\par
+|     3 | Nb Sub Mandip Singh      | 2020-06-17 |\par
+|     4 | Nb Sub Satnam Singh      | 2020-06-17 |\par
+|     5 | Hav K Palani             | 2020-06-17 |\par
+|     6 | Hav Sunil Kumar          | 2020-06-17 |\par
+|     7 | Hav Bipul Roy            | 2020-06-17 |\par
+|     8 | Nk Deepak Kumar          | 2020-06-17 |\par
+|     9 | Sep Rajesh Orang         | 2020-06-17 |\par
+|    10 | Sep Kundan Kumar Ojha    | 2020-06-17 |\par
+|    11 | Sep Ganesh Ram           | 2020-06-17 |\par
+|    12 | Sep Chandrakanta Pradhan | 2020-06-17 |\par
+|    13 | Sep Ankush               | 2020-06-17 |\par
+|    14 | Sep Gurbinder            | 2020-06-17 |\par
+|    15 | Sep Gurtej Singh         | 2020-06-17 |\par
+|    16 | Sep Chandan Kumar        | 2020-06-17 |\par
+|    17 | Sep Kundan Kumar         | 2020-06-17 |\par
+|    18 | Sep Aman Kumar           | 2020-06-17 |\par
+|    19 | Sep Jai Kishore Singh    | 2020-06-17 |\par
+|    20 | Sep Ganesh Hansda        | 2020-06-17 |\par
++-------+--------------------------+------------+\par
+20 rows in set (0.00 sec)\par
+\par
+mysql>\par
+}
+ 
